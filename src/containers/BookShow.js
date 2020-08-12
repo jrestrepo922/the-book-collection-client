@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getBook } from '../actions/books'
+import { getBooks } from '../actions/books'
 import BookShowComponent from '../components/Books/BookShowComponent'
 
 class BookShow extends Component {
 
 componentDidMount(){
-    debugger
-    this.props.getBook(this.props.match.params.genre_id,  this.props.match.params.id)
+    this.props.getBooks(this.props.match.params.genre_id,  this.props.match.params.id)
 }
 
     render() {
-        const bookInArray = this.props.books.map(book => {
-            return <BookShowComponent book={book}/>
+        const findBook = this.props.books.filter(book => book.id.toString() === this.props.match.params.id) 
+
+        const displayFoundBook = findBook.map(book => {
+            return <BookShowComponent book={book} key={book.id}/>
         })
         return (
             <div>
-                {bookInArray}
+                {displayFoundBook}
             </div>
         )
     }
@@ -29,4 +30,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getBook } )(BookShow);
+export default connect(mapStateToProps, { getBooks } )(BookShow);

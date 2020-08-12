@@ -19,12 +19,14 @@ export default (state = { books: [], loading: false}, action) => {
             }
 
         case 'BOOK_ADDED':
-            debugger
             return{
                 ...state,
                 Books: [...state.books, action.payload],
                 loading: false
             }
+
+
+
         default:
             return state;      
     }

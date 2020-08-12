@@ -15,7 +15,7 @@ class GenresIndex extends Component {
         })
         return (
             <div>
-                {genres}
+                {this.props.loading ? <h3>Loading......</h3>: genres}    
                 <NewGenreForm addGenre={this.props.addGenre}/>
             </div>
         )

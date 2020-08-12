@@ -17,7 +17,7 @@ class BooksIndex extends Component {
         })
         return (
             <div>
-                {books}
+                {this.props.loading ? <h3>Loading......</h3>: books}    
                 <Link
                 to={`/genres/${this.props.match.params.genre_id}/books/new`}>
                 <button

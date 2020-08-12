@@ -18,7 +18,7 @@ function App() {
           <Route exact path='/genres' component={GenresIndex}/> 
           <Route exact path='/genres/:genre_id/books' component={BooksIndex}/> 
           <Route exact path='/genres/:genre_id/books/new' component={NewBookForm}/> 
-          <Route exact path='/genres/:genre_id/books/:id' compoent={BookShow}/> 
+          <Route exact path='/genres/:genre_id/books/:id' component={BookShow}/> 
         </Switch>
       </div>
     </Router>
