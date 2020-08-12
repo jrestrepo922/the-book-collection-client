@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addBook } from '../../actions/books'
+import { Link } from 'react-router-dom'
 
 
 class NewBookForm extends Component {
@@ -107,16 +108,17 @@ class NewBookForm extends Component {
 
 
                     <input type="submit" id="submitBtn"></input>
+
+                    
                 </form>
             </div>
         )
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         addBook: (book, genreId) => dispatch(addBook(book))
-//     }
-// }
+// <Link
+// to={`/genres/${this.props.match.params.genre_id}/books`}>
+//     <input type="submit" id="submitBtn"></input>
+// </Link>
 
 export default connect(null, { addBook } )(NewBookForm);

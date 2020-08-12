@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const BookShowComponent = (props) => {
     return (
@@ -15,6 +16,10 @@ const BookShowComponent = (props) => {
                     <p id="bookFormat">Book Format: &nbsp;  <b>{props.book.format}</b> </p>
                     <hr></hr>
                     <p id="completed" ><b>{props.completed ? "Complete" : "Incomplete"}</b> </p>
+                    <Link
+                    to={`/genres/${props.book.genre_id}/books`}>
+                    <button  id={`${props.book.genre_id} ${props.book.id}`} onClick={props.handleClick}>Delete Book</button>
+                    </Link>
                 </div>
             </div> 
         </div>

@@ -19,10 +19,19 @@ export default (state = { genres: [], loading: false}, action) => {
             }
 
         case 'GENRE_ADDED':
-            return{
-                ...state,
-                genres: [...state.genres, action.payload],
-                loading: false
+            let duplicate = state.genres.filter(genre => genre.genre_name.toLowerCase() === action.payload.genre_name.toLowerCase())
+            if(duplicate.length === 0){
+                return{
+                    ...state,
+                    genres: [...state.genres, action.payload],
+                    loading: false
+                }
+            } else {
+                return{
+                    ...state,
+                    genres: [...state.genres],
+                    loading: false
+                }
             }
 
         case "DELETING_GENRE":

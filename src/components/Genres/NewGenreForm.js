@@ -13,7 +13,12 @@ class NewGenreForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const genre = {genre_name: this.state.genreName}
+        let stringArray = this.state.genreName.split(" ")
+        let capitalizeArray = stringArray.map(word =>  {
+            return (word.charAt(0).toUpperCase() + word.slice(1))
+          })
+        let capitalizeStringArray = capitalizeArray.join(" ")
+        const genre = {genre_name: capitalizeStringArray}
         this.props.addGenre(genre)
         this.setState({
             genreName: ""

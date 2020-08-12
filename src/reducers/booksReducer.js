@@ -25,6 +25,18 @@ export default (state = { books: [], loading: false}, action) => {
                 loading: false
             }
 
+        case "DELETING_BOOK":
+            return {
+                ...state, 
+                loading: true 
+            }
+
+        case "BOOK_DELETED":
+            return {
+                ...state,
+                books: [...state.books.filter(book => book.id !== action.payload)],
+                loading: false
+            }  
 
 
         default:
