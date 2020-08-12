@@ -18,7 +18,7 @@ export const addBook = (book, genreId)  => {
             }
         })
         .then(res => res.json())
-        .then(genre => dispatch({type: "BOOK_ADDED", payload: genre}))
+        .then(book => dispatch({type: "BOOK_ADDED", payload: book}))
     }
 }
 

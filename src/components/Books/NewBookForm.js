@@ -48,6 +48,7 @@ class NewBookForm extends Component {
             format: '',
             image: ''
         })
+        this.props.history.push(`/genres/${this.props.match.params.genre_id}/books`)
     }
 
     render() {

@@ -6,7 +6,7 @@ const BookShowComponent = (props) => {
         <div>
             <div className="BookComponentColumn">
                 <div className="BookComponentCard">
-                    <img src={`../assets/images/${props.book.image}`} width="220" height="263" alt=" Not Avaliable"/>
+                    <img src={`/images/${props.book.image}.jpg`} width="220" height="263" alt=" Not Avaliable"/>
                     <p id="bookTitle"><b>{props.book.title}</b></p>
                     <hr></hr>
                     <p id="bookDescription">Description: &nbsp;  {props.book.description}</p>
@@ -15,7 +15,7 @@ const BookShowComponent = (props) => {
                     <hr></hr>
                     <p id="bookFormat">Book Format: &nbsp;  <b>{props.book.format}</b> </p>
                     <hr></hr>
-                    <p id="completed" ><b>{props.completed ? "Complete" : "Incomplete"}</b> </p>
+                    <p id="completed" ><b>{props.book.completed ? "Completed" : "Incompleted"}</b> </p>
                     <Link
                     to={`/genres/${props.book.genre_id}/books`}>
                     <button  id={`${props.book.genre_id} ${props.book.id}`} onClick={props.handleClick}>Delete Book</button>
