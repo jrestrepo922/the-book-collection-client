@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './components/Home'
+import GenresIndex from './containers/GenresIndex'
+import Navigation from './components/Navigation';
+import BooksIndex from './containers/BooksIndex';
+import NewBookForm from './components/Books/NewBookForm';
+import BookShow from './containers/BookShow'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router> 
+      <Navigation/>
+      <div className="App">
+        <Switch>
+          <Route exact path='/' component={Home}/> 
+          <Route exact path='/genres' component={GenresIndex}/> 
+          <Route exact path='/genres/:genre_id/books' component={BooksIndex}/> 
+          <Route exact path='/genres/:genre_id/books/new' component={NewBookForm}/> 
+          <Route exact path='/genres/:genre_id/books/:id' compoent={BookShow}/> 
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
