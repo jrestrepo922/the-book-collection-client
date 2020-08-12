@@ -19,12 +19,25 @@ export default (state = { genres: [], loading: false}, action) => {
             }
 
         case 'GENRE_ADDED':
-            debugger
             return{
                 ...state,
                 genres: [...state.genres, action.payload],
                 loading: false
             }
+
+        case "DELETING_GENRE":
+            return {
+                ...state, 
+                loading: true 
+            }
+
+        case "GENRE_DELETED":
+            return {
+                ...state,
+                genres: [...state.genres.filter(genre => genre.id !== action.payload)],
+                loading: false
+            }   
+
         default:
             return state;      
     }

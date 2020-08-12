@@ -17,7 +17,7 @@ componentDidMount(){
         })
         return (
             <div>
-                {displayFoundBook}
+                {this.props.loading ? <h3>Loading......</h3>: displayFoundBook}
             </div>
         )
     }

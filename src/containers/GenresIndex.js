@@ -2,16 +2,20 @@ import React, { Component } from 'react'
 import Genre from '../components/Genres/Genre'
 import NewGenreForm from '../components/Genres/NewGenreForm'
 import { connect } from 'react-redux'
-import { getGenres, addGenre } from '../actions/genres'
+import { getGenres, addGenre, deleteGenre } from '../actions/genres'
 
 class GenresIndex extends Component {
     componentDidMount(){
         this.props.getGenres()
     }
+
+    handleClick = (event) => {
+        this.props.deleteGenre(parseInt(event.target.id))
+    }
     
     render() {
         const genres = this.props.genres.map(genre => {
-            return <Genre key={genre.id} genre={genre}/>
+            return <Genre key={genre.id} genre={genre} handleClick={this.handleClick}/>
         })
         return (
             <div>
@@ -30,11 +34,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getGenres: () => dispatch(getGenres()),
-        addGenre: (genre) => dispatch(addGenre(genre))
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         getGenres: () => dispatch(getGenres()),
+//         addGenre: (genre) => dispatch(addGenre(genre))
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GenresIndex)
+export default connect(mapStateToProps, { getGenres, addGenre, deleteGenre })(GenresIndex)

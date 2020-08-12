@@ -22,4 +22,16 @@ export const addGenre = (genre)  => {
     }
 }
 
+export const deleteGenre = (id)  => {
 
+    return dispatch => {
+        dispatch({type: "DELETING_GENRE"})
+        return fetch(`http://localhost:3001/genres/${id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(() => dispatch({type: "GENRE_DELETED", payload: id}))
+    }
+}
