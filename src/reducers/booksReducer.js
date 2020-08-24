@@ -21,7 +21,7 @@ export default (state = { books: [], loading: false}, action) => {
         case 'BOOK_ADDED':
             return{
                 ...state,
-                Books: [...state.books, action.payload],
+                books: [...state.books, action.payload],
                 loading: false
             }
 

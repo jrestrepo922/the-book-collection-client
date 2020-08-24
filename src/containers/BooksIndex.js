@@ -29,16 +29,18 @@ class BooksIndex extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
+    return { 
+        
         books: state.booksReducer.books,
         loading: state.booksReducer.loading
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getBooks: (genre_id) => dispatch(getBooks(genre_id))
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         getBooks: (genre_id) => dispatch(getBooks(genre_id))
+//     }
+// }
 
-export default  connect(mapStateToProps, mapDispatchToProps)(BooksIndex);
+// export default  connect(mapStateToProps, mapDispatchToProps)(BooksIndex);
+export default  connect(mapStateToProps, { getBooks })(BooksIndex);
