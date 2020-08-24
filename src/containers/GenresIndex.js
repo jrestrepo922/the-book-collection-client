@@ -3,7 +3,6 @@ import Genre from '../components/Genres/Genre'
 import NewGenreForm from '../components/Genres/NewGenreForm'
 import { connect } from 'react-redux'
 import { getGenres, addGenre, deleteGenre } from '../actions/genres'
-import Test from '../components/test/Test'
 
 class GenresIndex extends Component {
     componentDidMount(){
@@ -22,7 +21,6 @@ class GenresIndex extends Component {
             <div>
                 {this.props.loading ? <h3>Loading......</h3>: genres}    
                 <NewGenreForm addGenre={this.props.addGenre}/>
-                <Test/>
             </div>
         )
     }

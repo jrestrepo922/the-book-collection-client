@@ -33,6 +33,14 @@ const Navigation = () => (
             }}
             >Genres</NavLink>
 
+            <NavLink
+            to="/wishlist"
+            exact 
+            style={link}
+            activeStyle={{
+                background: 'darkblue'
+            }}
+            >WishList</NavLink>
         </div>
 )
 

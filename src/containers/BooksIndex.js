@@ -21,7 +21,7 @@ class BooksIndex extends Component {
                 <Link
                 to={`/genres/${this.props.match.params.genre_id}/books/new`}>
                 <button
-                >Add A New Book</button>
+                >Add Book to Collection</button>
                 </Link> 
             </div>
         )
