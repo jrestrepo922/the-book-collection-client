@@ -1,25 +1,41 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addBook } from '../../actions/books'
+import { addBook, getBooks } from '../../actions/books'
+import CheckBoxChecked from './CheckBoxChecked'
+import CheckBoxUnchecked from './CheckBoxUnchecked'
 
 
 
 class NewBookForm extends Component {
+
+    
+
     state = {
-        title: '',
-        description: '', 
-        author: '', 
-        completed: false, 
-        format: '',
-        image: ''
+        title: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].title,
+        description: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].description, 
+        author: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].author, 
+        completed: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].completed, 
+        format: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].format,
+        image: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].image,
+        wishlistItem: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].wishlistItem
 
     }
+
+    correctBook = () => {
+        return this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0]
+    }
+   
 
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value 
         })
     }
+
+    componentDidMount(){
+        this.props.getBooks(this.props.match.params.genre_id)
+    }
+
 
     handleChangeCheckBox = (event) => {
         if (event.target.checked){
@@ -29,7 +45,7 @@ class NewBookForm extends Component {
         }    
     }
 
-    handleSubmit= (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
         const book = {
             title: this.state.title,
@@ -52,7 +68,11 @@ class NewBookForm extends Component {
     }
 
     render() {
+        const book = this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0]
+
+
         return (
+            
             
             <div>
                 <h2>Create New Book</h2>
@@ -82,13 +102,8 @@ class NewBookForm extends Component {
                     onChange={this.handleChange}
                     value={this.state.author}/><br></br>
 
-                    <label >Finish: </label><br></br> 
-                    <input 
-                    type="checkbox" 
-                    name="completed" 
-                    id="completed"
-                    onChange={this.handleChangeCheckBox}
-                    /><br></br>
+                    {book.completed ?  <CheckBoxChecked book={book} handleOnChangeCheckBox={this.handleChangeCheckBox}/> 
+                    : <CheckBoxUnchecked book={book} handleOnChangeCheckBox={this.handleChangeCheckBox}/>}
 
 
                     <label >Format: </label><br></br> 
@@ -117,9 +132,15 @@ class NewBookForm extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        books: state.booksReducer.books
+    }
+}
+
 // <Link
 // to={`/genres/${this.props.match.params.genre_id}/books`}>
 //     <input type="submit" id="submitBtn"></input>
 // </Link>
 
-export default connect(null, { addBook } )(NewBookForm);
+export default connect(mapStateToProps, { addBook, getBooks } )(NewBookForm);

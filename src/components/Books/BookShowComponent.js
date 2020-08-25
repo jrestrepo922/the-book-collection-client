@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const BookShowComponent = (props) => {
+
     return (
         <div>
             <div className="BookComponentColumn">
@@ -16,10 +17,19 @@ const BookShowComponent = (props) => {
                     <p id="bookFormat">Book Format: &nbsp;  <b>{props.book.format}</b> </p>
                     <hr></hr>
                     <p id="completed" >Book Status: &nbsp; <b>{props.book.completed ? "Finish" : "Unfinish"}</b> </p>
+                    
                     <Link
-                    to={`/genres/${props.book.genre_id}/books`}>
-                    <button  id={`${props.book.genre_id} ${props.book.id}`} onClick={props.handleClick}>Delete Book</button>
-                    </Link>
+                    to={`/genres/${props.book.genre_id}/books/${props.book.id}/edit`}>
+                    <button  id={`${props.book.genre_id} ${props.book.id}`} >Edit Book</button>
+                    </Link> &nbsp; &nbsp; &nbsp;
+                    
+                    
+                    <Link
+                    to={props.book.wishlist_item ? '/wishlist/books' : `/genres/${props.book.genre_id}/books`}>
+                    <button  id={`${props.book.genre_id} ${props.book.id}`} onClick={props.handleClick}>Delete Book</button>  
+                    </Link> 
+                    
+
                 </div>
             </div> 
         </div>
