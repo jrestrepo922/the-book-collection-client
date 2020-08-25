@@ -15,7 +15,8 @@ const Book = (props) => {
                     <hr></hr>
                     <p id="bookAuthor">Author Name: &nbsp;  <b>{props.book.author}</b> </p>
                     <hr></hr>
-                    <p id="completed" ><b>{props.book.completed ? "Completed" : "Incompleted"}</b> </p>
+                    <p id="completed" >Book Status: &nbsp; <b>{props.book.completed ? "Finish" : "Unfinish"}</b> </p>
+                    
                 </div>
             </div>
         </div>

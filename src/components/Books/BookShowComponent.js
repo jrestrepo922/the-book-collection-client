@@ -15,7 +15,7 @@ const BookShowComponent = (props) => {
                     <hr></hr>
                     <p id="bookFormat">Book Format: &nbsp;  <b>{props.book.format}</b> </p>
                     <hr></hr>
-                    <p id="completed" ><b>{props.book.completed ? "Completed" : "Incompleted"}</b> </p>
+                    <p id="completed" >Book Status: &nbsp; <b>{props.book.completed ? "Finish" : "Unfinish"}</b> </p>
                     <Link
                     to={`/genres/${props.book.genre_id}/books`}>
                     <button  id={`${props.book.genre_id} ${props.book.id}`} onClick={props.handleClick}>Delete Book</button>

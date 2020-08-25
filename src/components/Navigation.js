@@ -34,7 +34,7 @@ const Navigation = () => (
             >Genres</NavLink>
 
             <NavLink
-            to="/wishlist"
+            to="/wishlist/books"
             exact 
             style={link}
             activeStyle={{

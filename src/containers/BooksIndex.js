@@ -12,9 +12,14 @@ class BooksIndex extends Component {
     }
     
     render() {
-        const books = this.props.books.map(book => {
-            return <Book key={book.id} book={book}/>
+        // const books = this.props.books.map(book => {
+        //     return <Book key={book.id} book={book}/>
+        // })
+
+        const books = this.props.books.filter(book => book.wishlist_item === false).map(book => {
+            return <Book key={book.id} book={book}/> 
         })
+        
         return (
             <div>
                 {this.props.loading ? <h3>Loading......</h3>: books}    
