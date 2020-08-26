@@ -36,3 +36,18 @@ export const deleteBook = (genreId, id)  => {
         .then(() => dispatch({type: "BOOK_DELETED", payload: id}))
     }
 }
+
+export const editBook = (id, genreId, book)  => {
+    return dispatch => {
+        dispatch({type: "EDITTING_BOOK"})
+        return fetch(`http://localhost:3001/genres/${genreId}/books/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify(book),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(book => dispatch({type: "BOOK_EDITTED", payload: book}))
+    }
+}

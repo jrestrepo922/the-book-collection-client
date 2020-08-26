@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addBook, getBooks } from '../../actions/books'
+import { editBook, getBooks } from '../../actions/books'
 import CheckBoxChecked from './CheckBoxChecked'
 import CheckBoxUnchecked from './CheckBoxUnchecked'
 
@@ -14,7 +14,7 @@ class NewBookForm extends Component {
         title: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].title,
         description: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].description, 
         author: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].author, 
-        completed: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].completed, 
+        completed: false, 
         format: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].format,
         image: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].image,
         wishlistItem: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].wishlistItem
@@ -38,14 +38,17 @@ class NewBookForm extends Component {
 
 
     handleChangeCheckBox = (event) => {
+
         if (event.target.checked){
+            
             this.setState({
                 completed: true
-            })
-        }    
+            }) 
+        }  
     }
 
     handleSubmit = (event) => {
+        debugger
         event.preventDefault();
         const book = {
             title: this.state.title,
@@ -53,9 +56,10 @@ class NewBookForm extends Component {
             author: this.state.author, 
             completed: this.state.completed, 
             format: this.state.format,
-            image: this.state.image
+            image: this.state.image,
+            wishlist_item: this.state.wishlistItem
         }
-        this.props.addBook(book, this.props.match.params.genre_id)
+        this.props.editBook(this.props.match.params.id, this.props.match.params.genre_id, book)
         this.setState({
             title: '',
             description: '', 
@@ -102,8 +106,13 @@ class NewBookForm extends Component {
                     onChange={this.handleChange}
                     value={this.state.author}/><br></br>
 
-                    {book.completed ?  <CheckBoxChecked book={book} handleOnChangeCheckBox={this.handleChangeCheckBox}/> 
-                    : <CheckBoxUnchecked book={book} handleOnChangeCheckBox={this.handleChangeCheckBox}/>}
+                    <label >Finish: </label><br></br> 
+                    <input 
+                    type="checkbox" 
+                    name="completed" 
+                    id="completed"
+                    onChange={this.handleChangeCheckBox}
+                    /><br></br>
 
 
                     <label >Format: </label><br></br> 
@@ -143,4 +152,4 @@ const mapStateToProps = (state) => {
 //     <input type="submit" id="submitBtn"></input>
 // </Link>
 
-export default connect(mapStateToProps, { addBook, getBooks } )(NewBookForm);
+export default connect(mapStateToProps, { editBook, getBooks } )(NewBookForm);
