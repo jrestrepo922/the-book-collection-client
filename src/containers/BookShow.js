@@ -10,9 +10,8 @@ componentDidMount(){
 }
 
 handleClick = (event) => {
-    let idGrenreIdArray = event.target.id.split(" ")
-    let genreId = parseInt(idGrenreIdArray[0])
-    let id = parseInt(idGrenreIdArray[1])
+    let genreId = parseInt(event.target.dataset.genre_id)
+    let id = parseInt(event.target.dataset.id)
     this.props.deleteBook(genreId, id)
 }
 

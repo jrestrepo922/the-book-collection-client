@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CheckBoxChecked = (props) => {
+const BookReadCheckBox = (props) => {
     return (
         <div>
             <label >Finish: </label><br></br> 
@@ -8,11 +8,10 @@ const CheckBoxChecked = (props) => {
             type="checkbox" 
             name="completed" 
             id="completed"
-            onChange={props.handleOnChangeCheckBox}
-            checked
+            onChange={props.handleOnChangeCheckBoxRead}
             /><br></br>
         </div>
     )
 }
 
-export default CheckBoxChecked; 
+export default BookReadCheckBox;

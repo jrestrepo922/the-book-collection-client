@@ -11,6 +11,8 @@ import WishlistBooksIndex from './containers/WishlistBooksIndex';
 import NewWishlistBookForm from './components/WishList/NewWishlistBookForm';
 import EditBookForm from './components/Books/EditBookForm'
 
+
+
 function App() {
   return (
     <Router> 
@@ -25,7 +27,6 @@ function App() {
           <Route exact path='/genres/:genre_id/books/:id/edit' component={EditBookForm}/>  
           <Route exact path='/wishlist/books' component={WishlistBooksIndex}/> 
           <Route exact path='/wishlist/books/new' component={NewWishlistBookForm}/> 
-
         </Switch>
       </div>
     </Router>

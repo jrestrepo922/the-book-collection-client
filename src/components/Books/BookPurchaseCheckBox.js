@@ -1,19 +1,17 @@
 import React from 'react'
 
-const CheckBoxUnchecked = (props) => {
+const BookPurchaseCheckBox = (props) => {
     return (
         <div>
-        <div>
-            <label >Finish: </label><br></br> 
+            <label >Purchased?: </label><br></br> 
             <input 
             type="checkbox" 
             name="completed" 
             id="completed"
-            onChange={props.handleOnChangeCheckBox}
+            onChange={props.handleOnChangeCheckBoxPurchased}
             /><br></br>
-        </div>
         </div>
     )
 }
 
-export default CheckBoxUnchecked
+export default BookPurchaseCheckBox;

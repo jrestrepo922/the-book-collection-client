@@ -33,7 +33,6 @@ class NewWishlistBookForm extends Component {
             wishlist_item: this.state.wishlistItem,
             genre_id: this.state.genreId
         }
-        debugger
         
         this.props.addBook(book, this.state.genreId)
         this.setState({

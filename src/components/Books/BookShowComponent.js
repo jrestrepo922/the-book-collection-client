@@ -20,13 +20,13 @@ const BookShowComponent = (props) => {
                     
                     <Link
                     to={`/genres/${props.book.genre_id}/books/${props.book.id}/edit`}>
-                    <button  id={`${props.book.genre_id} ${props.book.id}`} >Edit Book</button>
+                    <button  data-genre_id={props.book.genre_id}  data-id={props.book.id}  >Edit Book</button>
                     </Link> &nbsp; &nbsp; &nbsp;
                     
                     
                     <Link
                     to={props.book.wishlist_item ? '/wishlist/books' : `/genres/${props.book.genre_id}/books`}>
-                    <button  id={`${props.book.genre_id} ${props.book.id}`} onClick={props.handleClick}>Delete Book</button>  
+                    <button  data-genre_id={props.book.genre_id}  data-id={props.book.id}  onClick={props.handleClick}>Delete Book</button>  
                     </Link> 
                     
 

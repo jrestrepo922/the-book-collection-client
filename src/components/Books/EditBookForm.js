@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { editBook, getBooks } from '../../actions/books'
-import CheckBoxChecked from './CheckBoxChecked'
-import CheckBoxUnchecked from './CheckBoxUnchecked'
+import BookPurchaseCheckBox from './BookPurchaseCheckBox'
+import BookReadCheckBox from './BookReadCheckBox'
 
 
 
-class NewBookForm extends Component {
+class EditBookForm extends Component {
 
     
 
@@ -17,7 +17,7 @@ class NewBookForm extends Component {
         completed: false, 
         format: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].format,
         image: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].image,
-        wishlistItem: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].wishlistItem
+        wishlistItem: this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0].wishlist_item
 
     }
 
@@ -37,7 +37,7 @@ class NewBookForm extends Component {
     }
 
 
-    handleChangeCheckBox = (event) => {
+    handleChangeCheckBoxRead = (event) => {
 
         if (event.target.checked){
             
@@ -47,8 +47,18 @@ class NewBookForm extends Component {
         }  
     }
 
+
+    handleChangeCheckBoxPurchased = (event) => {
+
+        if (event.target.checked){
+            
+            this.setState({
+                wishlistItem: false
+            }) 
+        }  
+    }
+
     handleSubmit = (event) => {
-        debugger
         event.preventDefault();
         const book = {
             title: this.state.title,
@@ -68,14 +78,14 @@ class NewBookForm extends Component {
             format: '',
             image: ''
         })
-        this.props.history.push(`/genres/${this.props.match.params.genre_id}/books`)
+        this.props.history.push(`/genres/${this.props.match.params.genre_id}/books/${this.props.match.params.id}`)
     }
 
     render() {
-        const book = this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0]
-
+        // const book = this.props.books.filter(book => book.id === parseInt(this.props.match.params.id))[0]
 
         return (
+            
             
             
             <div>
@@ -106,13 +116,9 @@ class NewBookForm extends Component {
                     onChange={this.handleChange}
                     value={this.state.author}/><br></br>
 
-                    <label >Finish: </label><br></br> 
-                    <input 
-                    type="checkbox" 
-                    name="completed" 
-                    id="completed"
-                    onChange={this.handleChangeCheckBox}
-                    /><br></br>
+                    {this.state.wishlistItem ? 
+                        <BookPurchaseCheckBox handleOnChangeCheckBoxPurchased={this.handleChangeCheckBoxPurchased}/>  
+                        : <BookReadCheckBox handleOnChangeCheckBoxRead={this.handleChangeCheckBoxRead} /> }
 
 
                     <label >Format: </label><br></br> 
@@ -152,4 +158,4 @@ const mapStateToProps = (state) => {
 //     <input type="submit" id="submitBtn"></input>
 // </Link>
 
-export default connect(mapStateToProps, { editBook, getBooks } )(NewBookForm);
+export default connect(mapStateToProps, { editBook, getBooks } )(EditBookForm);
