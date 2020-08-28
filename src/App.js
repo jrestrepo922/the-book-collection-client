@@ -10,6 +10,7 @@ import BookShow from './containers/BookShow'
 import WishlistBooksIndex from './containers/WishlistBooksIndex';
 import NewWishlistBookForm from './components/WishList/NewWishlistBookForm';
 import EditBookForm from './components/Books/EditBookForm'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 

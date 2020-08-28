@@ -1,46 +1,29 @@
 
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { Navbar, Nav } from 'react-bootstrap'
 
-
-const link = {
-    width: '100px',
-    padding: '12px',
-    margin: '6px 6px',
-    background: 'blue',
-    textDecoraton: 'none',
-    color: 'white'
-}
 
 
 const Navigation = () => (
         <div>
+        
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar.Brand href="/">Home</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link >
+                <NavLink to="/genres"exact >Genres</NavLink>
+            </Nav.Link>
+            <Nav.Link>
             <NavLink
-            to="/"
-            exact 
-            style={link}
-            activeStyle={{
-                background: 'darkblue'
-            }}
-            >Home</NavLink>
+            to="/wishlist/books" exact >WishList</NavLink>
+            </Nav.Link>
+          </Nav>
 
-            <NavLink
-            to="/genres"
-            exact 
-            style={link}
-            activeStyle={{
-                background: 'darkblue'
-            }}
-            >Genres</NavLink>
-
-            <NavLink
-            to="/wishlist/books"
-            exact 
-            style={link}
-            activeStyle={{
-                background: 'darkblue'
-            }}
-            >WishList</NavLink>
+        </Navbar.Collapse>
+        </Navbar>
         </div>
 )
 
