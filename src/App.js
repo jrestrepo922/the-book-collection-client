@@ -11,7 +11,7 @@ import WishlistBooksIndex from './containers/WishlistBooksIndex';
 import NewWishlistBookForm from './components/WishList/NewWishlistBookForm';
 import EditBookForm from './components/Books/EditBookForm'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import About from './components/About'
 
 
 
@@ -22,6 +22,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path='/' component={Home}/> 
+          <Route exact path='/about' component={About}/> 
           <Route exact path='/genres' component={GenresIndex}/> 
           <Route exact path='/genres/:genre_id/books' component={BooksIndex}/> 
           <Route exact path='/genres/:genre_id/books/new' component={NewBookForm}/> 
@@ -29,6 +30,7 @@ function App() {
           <Route exact path='/genres/:genre_id/books/:id/edit' component={EditBookForm}/>  
           <Route exact path='/wishlist/books' component={WishlistBooksIndex}/> 
           <Route exact path='/wishlist/books/new' component={NewWishlistBookForm}/> 
+          
         </Switch>
       </div>
     </Router>

@@ -9,7 +9,7 @@ const Home = () => {
         <div className="image-container">
             <Image src="images/backgroundImages/homebackground.jpg" className="home-image" />
             <Container>
-                <h1>Welcome to The Book Collection App! </h1> <br></br>
+                <h1 className='home-title'>Welcome to The Book Collection App! </h1> <br></br>
                 <h4>
                     The App allows you to add books to your collection filter by genres. 
                 </h4>

@@ -16,6 +16,7 @@ const Navigation = () => (
             <Nav>
               <Nav.Link href="/genres">Genres</Nav.Link>
               <Nav.Link href="/wishlist/books">Wishlist</Nav.Link>
+              <Nav.Link href="/about">About</Nav.Link>
             </Nav>
           </Navbar.Collapse>
           </Navbar>

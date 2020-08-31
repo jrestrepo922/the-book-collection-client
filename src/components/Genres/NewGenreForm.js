@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Container } from 'react-bootstrap'
+import './NewGenreForm.css'
 
 class NewGenreForm extends Component {
     state = {
@@ -27,9 +29,9 @@ class NewGenreForm extends Component {
 
     render() {
         return (
-            <div>
+            <Container className='new-genre-form-continer'>
                 <h2>Create New Genre</h2>
-                <p>Please fill in this form to create a new genre</p>
+                <p>Please fill in this form to create a new genre.</p>
                 <form onSubmit={this.handleSubmit}>
                     <label >Genre Name: </label><br></br> 
                     <input 
@@ -41,7 +43,7 @@ class NewGenreForm extends Component {
                     <input type="submit" id="submitBtn"></input>
                 </form>
                 
-            </div>
+            </Container>
         )
     }
 }

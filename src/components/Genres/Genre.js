@@ -1,18 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import './Genre.css'
+import { Button, Col, Modal } from 'react-bootstrap'
+
 
 const Genre = (props) => {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     // debugger
     return (
-        <div>
+
+
+        <Col xs={6} sm={6} md={4} lg={3} xl={3} className='genre-column'>
+
            <Link
            to={`/genres/${props.genre.id}/books`}>
-           <button
-           id = {props.genre.id}
-           >{props.genre.genre_name}</button>
+           <Button id = {props.genre.id} class="genre-btn" variant="primary">{props.genre.genre_name}</Button>{" "}
            </Link> 
-           <button id={props.genre.id} onClick={props.handleClick}>x</button>
-        </div>
+           <Button variant="outline-secondary" onClick={handleShow}>
+           X
+           </Button>
+           <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Genre {props.genre.genre_name} is about to be Deleted!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Are you sure you want to delete the genre?</Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                Close
+                </Button>
+                <Button id={props.genre.id} variant="primary" onClick={handleClose, props.handleClick}>
+                Delete
+                </Button>
+            </Modal.Footer>
+            </Modal>
+        </Col>
     )
 }
 

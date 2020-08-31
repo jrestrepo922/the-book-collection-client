@@ -3,6 +3,8 @@ import Genre from '../components/Genres/Genre'
 import NewGenreForm from '../components/Genres/NewGenreForm'
 import { connect } from 'react-redux'
 import { getGenres, addGenre, deleteGenre } from '../actions/genres'
+import './GenresIndex.css'
+import { Row } from 'react-bootstrap'
 
 class GenresIndex extends Component {
     componentDidMount(){
@@ -15,12 +17,21 @@ class GenresIndex extends Component {
     
     render() {
         const genres = this.props.genres.map(genre => {
-            return <Genre key={genre.id} genre={genre} handleClick={this.handleClick}/>
+            return (
+                <Genre key={genre.id} genre={genre} handleClick={this.handleClick}/>
+            )
         })
         return (
             <div>
-                {this.props.loading ? <h3>Loading......</h3>: genres}    
-                <NewGenreForm addGenre={this.props.addGenre}/>
+                <div className="genre-buttons-container">
+                    <Row>
+                    {this.props.loading ? <h3>Loading......</h3>: genres} 
+                    </Row>
+                </div>
+                <div className="genre-form-contaner">
+                    <NewGenreForm addGenre={this.props.addGenre}/>
+                </div>
+                
             </div>
         )
     }
