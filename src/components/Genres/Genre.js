@@ -31,6 +31,7 @@ const Genre = (props) => {
                 <Button variant="secondary" onClick={handleClose}>
                 Close
                 </Button>
+                {/* eslint-disable-next-line*/}
                 <Button id={props.genre.id} variant="primary" onClick={handleClose, props.handleClick}>
                 Delete
                 </Button>

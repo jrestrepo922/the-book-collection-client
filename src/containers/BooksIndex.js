@@ -3,6 +3,8 @@ import Book from '../components/Books/Book'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getBooks } from '../actions/books'
+import './BooksIndex.css'
+import { Button } from 'react-bootstrap'
 
 
 class BooksIndex extends Component {
@@ -22,12 +24,17 @@ class BooksIndex extends Component {
         
         return (
             <div>
-                {this.props.loading ? <h3>Loading......</h3>: books}    
-                <Link
-                to={`/genres/${this.props.match.params.genre_id}/books/new`}>
-                <button
-                >Add Book to Collection</button>
-                </Link> 
+                <div className='book-index-row'>
+                    {this.props.loading ? <h3>Loading......</h3>: books}  
+                </div>  
+                <br></br>
+                <div className='add-book-button'>
+                    <Link
+                    to={`/genres/${this.props.match.params.genre_id}/books/new`}>
+                    <Button
+                    >Add Book to Collection</Button>
+                    </Link> 
+                </div>
             </div>
         )
     }

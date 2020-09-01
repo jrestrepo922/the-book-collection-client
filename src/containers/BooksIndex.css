@@ -1,0 +1,10 @@
+.book-index-row {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-left: -15px;
+}
+
+.add-book-button {
+    margin-bottom: 2rem;
+}

@@ -1,0 +1,23 @@
+
+ 
+.books-index-image{
+  padding: 5% 10% 0% 10%;
+}
+
+.card-books{
+   margin:  5% 15% 5% 15%;
+   background-color: #ebe9e9;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-books .list-group-item{
+    background-color: #ebe9e9;
+}
+
+.card-books .list-group-item hr{
+    color: black;
+}
+
+.card-books .card-body{
+    padding: 1.25rem 1.25rem 0rem 1.25rem;
+}

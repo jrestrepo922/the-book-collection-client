@@ -3,6 +3,7 @@ import Book from '../components/Books/Book'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getGenres } from '../actions/genres'
+import { Button } from 'react-bootstrap'
 
 class WishlistBooksIndex extends Component {
 
@@ -29,14 +30,17 @@ class WishlistBooksIndex extends Component {
 
         return (
             <div>
-            <div>
-                {this.props.loading ? <h3>Loading......</h3>: books}    
-                <Link
-                to={`/wishlist/books/new`}>
-                <button
-                >Add Book To WishList</button>
-                </Link> 
-            </div>
+                <div className="book-index-row">
+                {this.props.loading ? <h3>Loading......</h3>: books} 
+                </div>
+                <div className='add-book-button'>
+                    <br></br> 
+                    <Link
+                    to={`/wishlist/books/new`}>
+                    <Button 
+                    >Add Book To WishList</Button>
+                    </Link>  
+                </div>
             </div>
         )
     }

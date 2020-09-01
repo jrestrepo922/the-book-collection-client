@@ -1,0 +1,23 @@
+.book-component-container{
+    background-color: #ebe9e9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 80%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+
+.book-component-container h4{
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.show-book-buttons button{
+    margin-bottom: 2rem;
+}
+
+.book-component-container img{
+    margin-top: 2rem;
+}

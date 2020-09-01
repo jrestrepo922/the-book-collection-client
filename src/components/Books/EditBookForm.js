@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import { editBook, getBooks } from '../../actions/books'
 import BookPurchaseCheckBox from './BookPurchaseCheckBox'
 import BookReadCheckBox from './BookReadCheckBox'
+import { Container } from 'react-bootstrap'
+import './EditBookForm.css'
+
 
 
 
@@ -88,7 +91,7 @@ class EditBookForm extends Component {
             
             
             
-            <div>
+            <Container className="edit-book-form-container">
                 <h2>Create New Book</h2>
                 <p>Please fill in this form to create a new book</p>
                 <form onSubmit={this.handleSubmit}>
@@ -142,7 +145,7 @@ class EditBookForm extends Component {
 
                     
                 </form>
-            </div>
+            </Container>
         )
     }
 }

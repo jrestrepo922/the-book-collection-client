@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addBook } from '../../actions/books'
 import { getGenres } from '../../actions/genres'
+import { Container } from 'react-bootstrap'
+import './NewWishlistBookForm.css'
+
 
 class NewWishlistBookForm extends Component {
     state = {
@@ -57,7 +60,7 @@ class NewWishlistBookForm extends Component {
             return <option value={`${genre.id}`} key={id}>{genre.genre_name}</option>
         })
         return (
-            <div>
+            <Container className="new-wishlist-book-form-container">
             <h2>Create New Wishlist Book</h2>
             <p>Please fill in this form to create a new Wishlist Book</p>
                 <form onSubmit={this.handleSubmit}>
@@ -113,7 +116,7 @@ class NewWishlistBookForm extends Component {
 
                     
                 </form>
-            </div>
+            </Container>
         )
     }
 }
